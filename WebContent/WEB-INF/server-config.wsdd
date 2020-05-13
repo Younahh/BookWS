@@ -1,0 +1,115 @@
+<ns1:deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java" xmlns:ns1="http://xml.apache.org/axis/wsdd/">
+ <ns1:globalConfiguration>
+  <ns1:parameter name="sendMultiRefs" value="true"/>
+  <ns1:parameter name="disablePrettyXML" value="true"/>
+  <ns1:parameter name="adminPassword" value="admin"/>
+  <ns1:parameter name="attachments.Directory" value="C:\Users\youness\Documents\java\.metadata\.plugins\org.eclipse.wst.server.core\tmp2\wtpwebapps\E-CommerceWS\WEB-INF\attachments"/>
+  <ns1:parameter name="dotNetSoapEncFix" value="true"/>
+  <ns1:parameter name="enableNamespacePrefixOptimization" value="false"/>
+  <ns1:parameter name="sendXMLDeclaration" value="true"/>
+  <ns1:parameter name="sendXsiTypes" value="true"/>
+  <ns1:parameter name="attachments.implementation" value="org.apache.axis.attachments.AttachmentsImpl"/>
+  <ns1:requestFlow>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="session"/>
+   </ns1:handler>
+   <ns1:handler type="java:org.apache.axis.handlers.JWSHandler">
+    <ns1:parameter name="scope" value="request"/>
+    <ns1:parameter name="extension" value=".jwr"/>
+   </ns1:handler>
+  </ns1:requestFlow>
+ </ns1:globalConfiguration>
+ <ns1:handler name="URLMapper" type="java:org.apache.axis.handlers.http.URLMapper"/>
+ <ns1:handler name="Authenticate" type="java:org.apache.axis.handlers.SimpleAuthenticationHandler"/>
+ <ns1:handler name="LocalResponder" type="java:org.apache.axis.transport.local.LocalResponder"/>
+ <ns1:service name="AdminService" provider="java:MSG">
+  <ns1:parameter name="allowedMethods" value="AdminService"/>
+  <ns1:parameter name="enableRemoteAdmin" value="false"/>
+  <ns1:parameter name="className" value="org.apache.axis.utils.Admin"/>
+  <ns1:namespace>http://xml.apache.org/axis/wsdd/</ns1:namespace>
+ </ns1:service>
+ <ns1:service name="Version" provider="java:RPC">
+  <ns1:parameter name="allowedMethods" value="getVersion"/>
+  <ns1:parameter name="className" value="org.apache.axis.Version"/>
+ </ns1:service>
+ <ns1:service name="Gestion" provider="java:RPC" style="wrapped" use="literal">
+  <ns3:operation name="chercherLivreId" qname="ns1:chercherLivreId" returnQName="ns1:chercherLivreIdReturn" returnType="ns2:Livre" soapAction="" xmlns:ns1="http://ws" xmlns:ns2="http://beans" xmlns:ns3="http://xml.apache.org/axis/wsdd/">
+   <ns3:parameter qname="ns1:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns3:operation>
+  <ns1:operation name="chercherLivre" qname="ns3:chercherLivre" returnQName="ns3:chercherLivreReturn" returnType="ns4:Livre" soapAction="" xmlns:ns3="http://ws" xmlns:ns4="http://beans">
+   <ns1:parameter qname="ns3:nom" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="ajouterLivre" qname="ns5:ajouterLivre" soapAction="" xmlns:ns5="http://ws">
+   <ns1:parameter qname="ns5:livre" type="ns6:Livre" xmlns:ns6="http://beans"/>
+  </ns1:operation>
+  <ns1:operation name="modifierLivre" qname="ns7:modifierLivre" soapAction="" xmlns:ns7="http://ws">
+   <ns1:parameter qname="ns7:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="authentifierUser" qname="ns8:authentifierUser" returnQName="ns8:authentifierUserReturn" returnType="ns9:User" soapAction="" xmlns:ns8="http://ws" xmlns:ns9="http://beans">
+   <ns1:parameter qname="ns8:email" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+   <ns1:parameter qname="ns8:password" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="supprimerLivre" qname="ns10:supprimerLivre" soapAction="" xmlns:ns10="http://ws">
+   <ns1:parameter qname="ns10:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="chercherUser" qname="ns11:chercherUser" returnQName="ns11:chercherUserReturn" returnType="ns12:User" soapAction="" xmlns:ns11="http://ws" xmlns:ns12="http://beans">
+   <ns1:parameter qname="ns11:email" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="ajouterUser" qname="ns13:ajouterUser" soapAction="" xmlns:ns13="http://ws">
+   <ns1:parameter qname="ns13:user" type="ns14:User" xmlns:ns14="http://beans"/>
+  </ns1:operation>
+  <ns1:operation name="modifierUser" qname="ns15:modifierUser" soapAction="" xmlns:ns15="http://ws">
+   <ns1:parameter qname="ns15:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="supprimerUser" qname="ns16:supprimerUser" soapAction="" xmlns:ns16="http://ws">
+   <ns1:parameter qname="ns16:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="chercherPanier" qname="ns17:chercherPanier" returnQName="ns17:chercherPanierReturn" returnType="ns18:Panier" soapAction="" xmlns:ns17="http://ws" xmlns:ns18="http://beans">
+   <ns1:parameter qname="ns17:idd" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="modifierLivreNbr" qname="ns19:modifierLivreNbr" soapAction="" xmlns:ns19="http://ws">
+   <ns1:parameter qname="ns19:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="ajouterPanier" qname="ns20:ajouterPanier" soapAction="" xmlns:ns20="http://ws">
+   <ns1:parameter qname="ns20:panier" type="ns21:Panier" xmlns:ns21="http://beans"/>
+  </ns1:operation>
+  <ns1:operation name="supprimerPanier" qname="ns22:supprimerPanier" soapAction="" xmlns:ns22="http://ws">
+   <ns1:parameter qname="ns22:id" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="chercherLivreCategorie" qname="ns23:chercherLivreCategorie" returnQName="ns23:chercherLivreCategorieReturn" returnType="ns24:Livre" soapAction="" xmlns:ns23="http://ws" xmlns:ns24="http://beans">
+   <ns1:parameter qname="ns23:categorie" type="xsd:string" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:operation name="chercherLivreNouveautes" qname="ns25:chercherLivreNouveautes" returnQName="ns25:chercherLivreNouveautesReturn" returnType="ns26:Livre" soapAction="" xmlns:ns25="http://ws" xmlns:ns26="http://beans"/>
+  <ns1:operation name="supprimerPanierIdd" qname="ns27:supprimerPanierIdd" soapAction="" xmlns:ns27="http://ws">
+   <ns1:parameter qname="ns27:idd" type="xsd:int" xmlns:xsd="http://www.w3.org/2001/XMLSchema"/>
+  </ns1:operation>
+  <ns1:parameter name="allowedMethods" value="supprimerPanier supprimerLivre authentifierUser modifierLivreNbr chercherLivreId supprimerUser supprimerPanierIdd ajouterPanier chercherPanier chercherLivreNouveautes modifierLivre chercherUser ajouterUser chercherLivre ajouterLivre chercherLivreCategorie modifierUser"/>
+  <ns1:parameter name="typeMappingVersion" value="1.2"/>
+  <ns1:parameter name="wsdlPortType" value="Gestion"/>
+  <ns1:parameter name="className" value="ws.Gestion"/>
+  <ns1:parameter name="wsdlServicePort" value="Gestion"/>
+  <ns1:parameter name="schemaQualified" value="http://ws,http://beans"/>
+  <ns1:parameter name="wsdlTargetNamespace" value="http://ws"/>
+  <ns1:parameter name="wsdlServiceElement" value="GestionService"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns28:Panier" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:beans.Panier" xmlns:ns28="http://beans"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns29:User" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:beans.User" xmlns:ns29="http://beans"/>
+  <ns1:typeMapping deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory" encodingStyle="" qname="ns30:Livre" serializer="org.apache.axis.encoding.ser.BeanSerializerFactory" type="java:beans.Livre" xmlns:ns30="http://beans"/>
+ </ns1:service>
+ <ns1:transport name="http">
+  <ns1:requestFlow>
+   <ns1:handler type="URLMapper"/>
+   <ns1:handler type="java:org.apache.axis.handlers.http.HTTPAuthHandler"/>
+  </ns1:requestFlow>
+  <ns1:parameter name="qs:list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs:wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+  <ns1:parameter name="qs.list" value="org.apache.axis.transport.http.QSListHandler"/>
+  <ns1:parameter name="qs.method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs:method" value="org.apache.axis.transport.http.QSMethodHandler"/>
+  <ns1:parameter name="qs.wsdl" value="org.apache.axis.transport.http.QSWSDLHandler"/>
+ </ns1:transport>
+ <ns1:transport name="local">
+  <ns1:responseFlow>
+   <ns1:handler type="LocalResponder"/>
+  </ns1:responseFlow>
+ </ns1:transport>
+</ns1:deployment>

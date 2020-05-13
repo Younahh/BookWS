@@ -1,0 +1,101 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GestionService WSDL service -->
+
+  <service name="Gestion" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://ws"/>
+      <parameter name="wsdlServiceElement" value="GestionService"/>
+      <parameter name="schemaQualified" value="http://ws,http://beans"/>
+      <parameter name="wsdlServicePort" value="Gestion"/>
+      <parameter name="className" value="ws.GestionSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="Gestion"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="chercherLivreId" qname="operNS:chercherLivreId" xmlns:operNS="http://ws" returnQName="retNS:chercherLivreIdReturn" xmlns:retNS="http://ws" returnType="rtns:Livre" xmlns:rtns="http://beans" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://ws" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="chercherLivre" qname="operNS:chercherLivre" xmlns:operNS="http://ws" returnQName="retNS:chercherLivreReturn" xmlns:retNS="http://ws" returnType="rtns:Livre" xmlns:rtns="http://beans" soapAction="" >
+        <parameter qname="pns:nom" xmlns:pns="http://ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="ajouterLivre" qname="operNS:ajouterLivre" xmlns:operNS="http://ws" soapAction="" >
+        <parameter qname="pns:livre" xmlns:pns="http://ws" type="tns:Livre" xmlns:tns="http://beans"/>
+      </operation>
+      <operation name="modifierLivre" qname="operNS:modifierLivre" xmlns:operNS="http://ws" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://ws" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="authentifierUser" qname="operNS:authentifierUser" xmlns:operNS="http://ws" returnQName="retNS:authentifierUserReturn" xmlns:retNS="http://ws" returnType="rtns:User" xmlns:rtns="http://beans" soapAction="" >
+        <parameter qname="pns:email" xmlns:pns="http://ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:password" xmlns:pns="http://ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="supprimerLivre" qname="operNS:supprimerLivre" xmlns:operNS="http://ws" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://ws" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="chercherUser" qname="operNS:chercherUser" xmlns:operNS="http://ws" returnQName="retNS:chercherUserReturn" xmlns:retNS="http://ws" returnType="rtns:User" xmlns:rtns="http://beans" soapAction="" >
+        <parameter qname="pns:email" xmlns:pns="http://ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="ajouterUser" qname="operNS:ajouterUser" xmlns:operNS="http://ws" soapAction="" >
+        <parameter qname="pns:user" xmlns:pns="http://ws" type="tns:User" xmlns:tns="http://beans"/>
+      </operation>
+      <operation name="modifierUser" qname="operNS:modifierUser" xmlns:operNS="http://ws" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://ws" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="supprimerUser" qname="operNS:supprimerUser" xmlns:operNS="http://ws" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://ws" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="chercherPanier" qname="operNS:chercherPanier" xmlns:operNS="http://ws" returnQName="retNS:chercherPanierReturn" xmlns:retNS="http://ws" returnType="rtns:Panier" xmlns:rtns="http://beans" soapAction="" >
+        <parameter qname="pns:idd" xmlns:pns="http://ws" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="modifierLivreNbr" qname="operNS:modifierLivreNbr" xmlns:operNS="http://ws" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://ws" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="ajouterPanier" qname="operNS:ajouterPanier" xmlns:operNS="http://ws" soapAction="" >
+        <parameter qname="pns:panier" xmlns:pns="http://ws" type="tns:Panier" xmlns:tns="http://beans"/>
+      </operation>
+      <operation name="supprimerPanier" qname="operNS:supprimerPanier" xmlns:operNS="http://ws" soapAction="" >
+        <parameter qname="pns:id" xmlns:pns="http://ws" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="chercherLivreCategorie" qname="operNS:chercherLivreCategorie" xmlns:operNS="http://ws" returnQName="retNS:chercherLivreCategorieReturn" xmlns:retNS="http://ws" returnType="rtns:Livre" xmlns:rtns="http://beans" soapAction="" >
+        <parameter qname="pns:categorie" xmlns:pns="http://ws" type="tns:string" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="chercherLivreNouveautes" qname="operNS:chercherLivreNouveautes" xmlns:operNS="http://ws" returnQName="retNS:chercherLivreNouveautesReturn" xmlns:retNS="http://ws" returnType="rtns:Livre" xmlns:rtns="http://beans" soapAction="" >
+      </operation>
+      <operation name="supprimerPanierIdd" qname="operNS:supprimerPanierIdd" xmlns:operNS="http://ws" soapAction="" >
+        <parameter qname="pns:idd" xmlns:pns="http://ws" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <parameter name="allowedMethods" value="supprimerPanier supprimerLivre authentifierUser modifierLivreNbr chercherLivreId supprimerUser supprimerPanierIdd ajouterPanier chercherPanier chercherLivreNouveautes modifierLivre chercherUser ajouterUser chercherLivre ajouterLivre chercherLivreCategorie modifierUser"/>
+
+      <typeMapping
+        xmlns:ns="http://beans"
+        qname="ns:Panier"
+        type="java:beans.Panier"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans"
+        qname="ns:User"
+        type="java:beans.User"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+      <typeMapping
+        xmlns:ns="http://beans"
+        qname="ns:Livre"
+        type="java:beans.Livre"
+        serializer="org.apache.axis.encoding.ser.BeanSerializerFactory"
+        deserializer="org.apache.axis.encoding.ser.BeanDeserializerFactory"
+        encodingStyle=""
+      />
+  </service>
+</deployment>

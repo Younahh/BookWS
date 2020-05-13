@@ -1,0 +1,1043 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://ws" xmlns:intf="http://ws" xmlns:tns1="http://beans" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://beans"/>
+   <element name="chercherLivreId">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="chercherLivreIdResponse">
+    <complexType>
+     <sequence>
+      <element name="chercherLivreIdReturn" type="tns1:Livre"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="chercherLivre">
+    <complexType>
+     <sequence>
+      <element name="nom" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="chercherLivreResponse">
+    <complexType>
+     <sequence>
+      <element name="chercherLivreReturn" type="tns1:Livre"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ajouterLivre">
+    <complexType>
+     <sequence>
+      <element name="livre" type="tns1:Livre"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ajouterLivreResponse">
+    <complexType/>
+   </element>
+   <element name="modifierLivre">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifierLivreResponse">
+    <complexType/>
+   </element>
+   <element name="authentifierUser">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+      <element name="password" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="authentifierUserResponse">
+    <complexType>
+     <sequence>
+      <element name="authentifierUserReturn" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="supprimerLivre">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="supprimerLivreResponse">
+    <complexType/>
+   </element>
+   <element name="chercherUser">
+    <complexType>
+     <sequence>
+      <element name="email" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="chercherUserResponse">
+    <complexType>
+     <sequence>
+      <element name="chercherUserReturn" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ajouterUser">
+    <complexType>
+     <sequence>
+      <element name="user" type="tns1:User"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ajouterUserResponse">
+    <complexType/>
+   </element>
+   <element name="modifierUser">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifierUserResponse">
+    <complexType/>
+   </element>
+   <element name="supprimerUser">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="supprimerUserResponse">
+    <complexType/>
+   </element>
+   <element name="chercherPanier">
+    <complexType>
+     <sequence>
+      <element name="idd" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="chercherPanierResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="chercherPanierReturn" type="tns1:Panier"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifierLivreNbr">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="modifierLivreNbrResponse">
+    <complexType/>
+   </element>
+   <element name="ajouterPanier">
+    <complexType>
+     <sequence>
+      <element name="panier" type="tns1:Panier"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="ajouterPanierResponse">
+    <complexType/>
+   </element>
+   <element name="supprimerPanier">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="supprimerPanierResponse">
+    <complexType/>
+   </element>
+   <element name="chercherLivreCategorie">
+    <complexType>
+     <sequence>
+      <element name="categorie" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="chercherLivreCategorieResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="chercherLivreCategorieReturn" type="tns1:Livre"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="chercherLivreNouveautes">
+    <complexType/>
+   </element>
+   <element name="chercherLivreNouveautesResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="chercherLivreNouveautesReturn" type="tns1:Livre"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="supprimerPanierIdd">
+    <complexType>
+     <sequence>
+      <element name="idd" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="supprimerPanierIddResponse">
+    <complexType/>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://beans" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="Livre">
+    <sequence>
+     <element name="auteur" nillable="true" type="xsd:string"/>
+     <element name="categorie" nillable="true" type="xsd:string"/>
+     <element name="description" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="image" nillable="true" type="xsd:string"/>
+     <element name="nbr" type="xsd:int"/>
+     <element name="nom" nillable="true" type="xsd:string"/>
+     <element name="prix" type="xsd:int"/>
+    </sequence>
+   </complexType>
+   <complexType name="User">
+    <sequence>
+     <element name="email" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="nom" nillable="true" type="xsd:string"/>
+     <element name="password" nillable="true" type="xsd:string"/>
+     <element name="phone" type="xsd:int"/>
+     <element name="prenom" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Panier">
+    <sequence>
+     <element name="auteur" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="idd" type="xsd:int"/>
+     <element name="image" nillable="true" type="xsd:string"/>
+     <element name="nom" nillable="true" type="xsd:string"/>
+     <element name="prix" type="xsd:int"/>
+     <element name="quantite" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="supprimerLivreRequest">
+
+      <wsdl:part element="impl:supprimerLivre" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherPanierRequest">
+
+      <wsdl:part element="impl:chercherPanier" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherPanierResponse">
+
+      <wsdl:part element="impl:chercherPanierResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierLivreNbrRequest">
+
+      <wsdl:part element="impl:modifierLivreNbr" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherLivreResponse">
+
+      <wsdl:part element="impl:chercherLivreResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierLivreNbrResponse">
+
+      <wsdl:part element="impl:modifierLivreNbrResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="supprimerUserResponse">
+
+      <wsdl:part element="impl:supprimerUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierLivreResponse">
+
+      <wsdl:part element="impl:modifierLivreResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajouterUserResponse">
+
+      <wsdl:part element="impl:ajouterUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajouterLivreResponse">
+
+      <wsdl:part element="impl:ajouterLivreResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierLivreRequest">
+
+      <wsdl:part element="impl:modifierLivre" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="authentifierUserRequest">
+
+      <wsdl:part element="impl:authentifierUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherLivreNouveautesResponse">
+
+      <wsdl:part element="impl:chercherLivreNouveautesResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="supprimerUserRequest">
+
+      <wsdl:part element="impl:supprimerUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherLivreNouveautesRequest">
+
+      <wsdl:part element="impl:chercherLivreNouveautes" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="supprimerPanierResponse">
+
+      <wsdl:part element="impl:supprimerPanierResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherLivreCategorieResponse">
+
+      <wsdl:part element="impl:chercherLivreCategorieResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajouterLivreRequest">
+
+      <wsdl:part element="impl:ajouterLivre" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherLivreIdRequest">
+
+      <wsdl:part element="impl:chercherLivreId" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="supprimerPanierIddResponse">
+
+      <wsdl:part element="impl:supprimerPanierIddResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherLivreIdResponse">
+
+      <wsdl:part element="impl:chercherLivreIdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherLivreRequest">
+
+      <wsdl:part element="impl:chercherLivre" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="authentifierUserResponse">
+
+      <wsdl:part element="impl:authentifierUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajouterPanierRequest">
+
+      <wsdl:part element="impl:ajouterPanier" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierUserResponse">
+
+      <wsdl:part element="impl:modifierUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="modifierUserRequest">
+
+      <wsdl:part element="impl:modifierUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="supprimerPanierRequest">
+
+      <wsdl:part element="impl:supprimerPanier" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherUserResponse">
+
+      <wsdl:part element="impl:chercherUserResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="supprimerPanierIddRequest">
+
+      <wsdl:part element="impl:supprimerPanierIdd" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="supprimerLivreResponse">
+
+      <wsdl:part element="impl:supprimerLivreResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajouterPanierResponse">
+
+      <wsdl:part element="impl:ajouterPanierResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherLivreCategorieRequest">
+
+      <wsdl:part element="impl:chercherLivreCategorie" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ajouterUserRequest">
+
+      <wsdl:part element="impl:ajouterUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="chercherUserRequest">
+
+      <wsdl:part element="impl:chercherUser" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="Gestion">
+
+      <wsdl:operation name="chercherLivreId">
+
+         <wsdl:input message="impl:chercherLivreIdRequest" name="chercherLivreIdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:chercherLivreIdResponse" name="chercherLivreIdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="chercherLivre">
+
+         <wsdl:input message="impl:chercherLivreRequest" name="chercherLivreRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:chercherLivreResponse" name="chercherLivreResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ajouterLivre">
+
+         <wsdl:input message="impl:ajouterLivreRequest" name="ajouterLivreRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ajouterLivreResponse" name="ajouterLivreResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifierLivre">
+
+         <wsdl:input message="impl:modifierLivreRequest" name="modifierLivreRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:modifierLivreResponse" name="modifierLivreResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="authentifierUser">
+
+         <wsdl:input message="impl:authentifierUserRequest" name="authentifierUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:authentifierUserResponse" name="authentifierUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="supprimerLivre">
+
+         <wsdl:input message="impl:supprimerLivreRequest" name="supprimerLivreRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:supprimerLivreResponse" name="supprimerLivreResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="chercherUser">
+
+         <wsdl:input message="impl:chercherUserRequest" name="chercherUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:chercherUserResponse" name="chercherUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ajouterUser">
+
+         <wsdl:input message="impl:ajouterUserRequest" name="ajouterUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ajouterUserResponse" name="ajouterUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifierUser">
+
+         <wsdl:input message="impl:modifierUserRequest" name="modifierUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:modifierUserResponse" name="modifierUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="supprimerUser">
+
+         <wsdl:input message="impl:supprimerUserRequest" name="supprimerUserRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:supprimerUserResponse" name="supprimerUserResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="chercherPanier">
+
+         <wsdl:input message="impl:chercherPanierRequest" name="chercherPanierRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:chercherPanierResponse" name="chercherPanierResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifierLivreNbr">
+
+         <wsdl:input message="impl:modifierLivreNbrRequest" name="modifierLivreNbrRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:modifierLivreNbrResponse" name="modifierLivreNbrResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ajouterPanier">
+
+         <wsdl:input message="impl:ajouterPanierRequest" name="ajouterPanierRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ajouterPanierResponse" name="ajouterPanierResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="supprimerPanier">
+
+         <wsdl:input message="impl:supprimerPanierRequest" name="supprimerPanierRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:supprimerPanierResponse" name="supprimerPanierResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="chercherLivreCategorie">
+
+         <wsdl:input message="impl:chercherLivreCategorieRequest" name="chercherLivreCategorieRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:chercherLivreCategorieResponse" name="chercherLivreCategorieResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="chercherLivreNouveautes">
+
+         <wsdl:input message="impl:chercherLivreNouveautesRequest" name="chercherLivreNouveautesRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:chercherLivreNouveautesResponse" name="chercherLivreNouveautesResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="supprimerPanierIdd">
+
+         <wsdl:input message="impl:supprimerPanierIddRequest" name="supprimerPanierIddRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:supprimerPanierIddResponse" name="supprimerPanierIddResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="GestionSoapBinding" type="impl:Gestion">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="chercherLivreId">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="chercherLivreIdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="chercherLivreIdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="chercherLivre">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="chercherLivreRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="chercherLivreResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ajouterLivre">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ajouterLivreRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ajouterLivreResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifierLivre">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifierLivreRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifierLivreResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="authentifierUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="authentifierUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="authentifierUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="supprimerLivre">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="supprimerLivreRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="supprimerLivreResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="chercherUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="chercherUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="chercherUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ajouterUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ajouterUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ajouterUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifierUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifierUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifierUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="supprimerUser">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="supprimerUserRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="supprimerUserResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="chercherPanier">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="chercherPanierRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="chercherPanierResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="modifierLivreNbr">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="modifierLivreNbrRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="modifierLivreNbrResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ajouterPanier">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ajouterPanierRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ajouterPanierResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="supprimerPanier">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="supprimerPanierRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="supprimerPanierResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="chercherLivreCategorie">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="chercherLivreCategorieRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="chercherLivreCategorieResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="chercherLivreNouveautes">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="chercherLivreNouveautesRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="chercherLivreNouveautesResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="supprimerPanierIdd">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="supprimerPanierIddRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="supprimerPanierIddResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="GestionService">
+
+      <wsdl:port binding="impl:GestionSoapBinding" name="Gestion">
+
+         <wsdlsoap:address location="http://localhost:8989/E-CommerceWS/services/Gestion"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
